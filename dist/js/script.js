@@ -15,6 +15,10 @@ API.Plugins.search = {
 					html += '</div>';
 				html += '</form>';
 				$('#DeskNav1').append(html);
+				$('#DeskNav1').find('form[name="search"]').submit(function(e){
+					e.preventDefault();
+					console.log(API.Helper.getUrlVars());
+				});
 			}
 		}, 100);
 	},
