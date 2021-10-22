@@ -30,7 +30,9 @@ API.Plugins.search = {
 			var query = API.Helper.getUrlVars();
 			API.request('search','search',{data:query},function(result){
 				var dataset = JSON.parse(result);
-				if(dataset.success != undefined){}
+				if(dataset.success != undefined){
+					console.log(dataset);
+				}
 			});
 		},
 	},
