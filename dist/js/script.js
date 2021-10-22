@@ -22,18 +22,15 @@ API.Plugins.search = {
 					var href = "?p=search&query="+query;
 					var windowLocation = new URL(window.location.href);
 					var url = new URL(windowLocation.origin+href);
-					window.history.pushState({page: 1},"Search", url.origin+href);
-					console.log(API.Helper.getUrlVars());
+					API.GUI.load($('#ContentFrame'),windowLocation.origin+href);
 				});
 			}
 		}, 100);
 	},
 	load:{
 		index:function(){
-			$('#DeskNav1').find('form[name="search"]').submit(function(e){
-				e.preventDefault();
-				console.log(API.Helper.getUrlVars());
-			});
+
+			console.log(API.Helper.getUrlVars());
 		},
 	},
 }
