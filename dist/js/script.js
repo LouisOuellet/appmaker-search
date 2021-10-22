@@ -1,24 +1,11 @@
 API.Plugins.search = {
-	element:{
-		table:{
-			index:{},
-		},
-		form:{
-			search:{},
-		},
-		input:{
-			search:{},
-		},
-		button:{
-			search:{},
-		},
-	},
 	init:function(){
 		var isLanguageSet = setInterval(function(){
 			if(API.Helper.isSet(API.Contents,['Language','Search'])){
 				clearInterval(isLanguageSet);
-				var html = '<form method="get" class="form-inline" style="height:56px; width:100%;">';
+				var html = '<form method="get" name="search" action class="form-inline" style="height:56px; width:100%;">';
 					html += '<div class="input-group" style="width:100%;border-radius: 0; height:100%;">';
+						html += '<input type="hidden" style="display:none;" name="p" value="search" />';
 						html += '<input class="form-control form-control-navbar" style="border-radius: 0;border-right: 0px; height:100%;box-shadow: inset 5px 0px 6px rgba(0,0,0,.16),inset 5px 0px 6px rgba(0,0,0,.23) !important;" type="search" name="query" placeholder="'+API.Contents.Language['Search']+'" aria-label="'+API.Contents.Language['Search']+'">';
 						html += '<div class="input-group-append">';
 							html += '<button type="button" class="btn btn-navbar pl-1 pr-3" style="border-radius: 0;box-shadow: inset -5px 0px 6px rgba(0,0,0,.16),inset -5px 0px 6px rgba(0,0,0,.23) !important;">';
@@ -28,14 +15,16 @@ API.Plugins.search = {
 					html += '</div>';
 				html += '</form>';
 				$('#DeskNav1').append(html);
-				API.Plugins.search.element.form.search = $('#DeskNav1').find('form').last();
-				API.Plugins.search.element.input.search = $('#DeskNav1').find('form').last().find('input');
-				API.Plugins.search.element.button.search = $('#DeskNav1').find('form').last().find('button');
 			}
 		}, 100);
 	},
 	load:{
-		index:function(){},
+		index:function(){
+			$('#DeskNav1').find('form[name="search"]').submit(function(e){
+				e.preventDefault();
+				console.log(API.Helper.getUrlVars());
+			});
+		},
 	},
 }
 
