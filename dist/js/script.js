@@ -16,11 +16,13 @@ API.Plugins.search = {
 				html += '</form>';
 				$('#DeskNav1').append(html);
 				$('#DeskNav1').find('form[name="search"]').submit(function(e){
-					form = $('#DeskNav1').find('form[name="search"]');
 					e.preventDefault();
+					var form = $('#DeskNav1').find('form[name="search"]');
+					var query = form.find('input[name="query"]').val();
+					var href = "?p=search&query="+query;
 					var windowLocation = new URL(window.location.href);
 					var url = new URL(windowLocation.origin+href);
-					window.history.pushState({page: 1},"Search", url.origin+"?p=search&query="+form.find('input[name="query"]').val());
+					window.history.pushState({page: 1},"Search", url.origin+href);
 					console.log(API.Helper.getUrlVars());
 				});
 			}
