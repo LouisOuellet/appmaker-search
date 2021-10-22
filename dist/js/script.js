@@ -27,8 +27,11 @@ API.Plugins.search = {
 	},
 	load:{
 		index:function(){
-
-			console.log(API.Helper.getUrlVars());
+			var query = API.Helper.getUrlVars();
+			API.request('search','search',{data:query},function(result){
+				var dataset = JSON.parse(result);
+				if(dataset.success != undefined){}
+			});
 		},
 	},
 }
