@@ -28,7 +28,7 @@ API.Plugins.search = {
 	load:{
 		index:function(){
 			var query = API.Helper.getUrlVars();
-			API.request('search','search',{data:query},function(result){
+			API.request('search','query',{data:query},function(result){
 				var dataset = JSON.parse(result);
 				if(dataset.success != undefined){
 					console.log(dataset);
