@@ -9,6 +9,7 @@ class searchAPI extends API {
 			foreach($this->Settings['plugins'] as $plugin => $conf){
 				$api = $plugin.'API';
 				if(class_exists($api) && method_exists($api,'search')){
+					$api = new $api();
 					$results['output'][$plugin] = $api->search();
 				}
 			}
