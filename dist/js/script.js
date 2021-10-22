@@ -20,9 +20,7 @@ API.Plugins.search = {
 					var form = $('#DeskNav1').find('form[name="search"]');
 					var query = form.find('input[name="query"]').val();
 					var href = "?p=search&query="+query;
-					var windowLocation = new URL(window.location.href);
-					var url = new URL(windowLocation.origin+href);
-					API.GUI.load($('#ContentFrame'),windowLocation.origin+href);
+					API.GUI.load($('#ContentFrame'),href);
 				});
 			}
 		}, 100);
